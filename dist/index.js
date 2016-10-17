@@ -67,7 +67,7 @@ exports['default'] = function (config) {
     }
 
     basePath = api.basePath || '';
-    router = (0, _ConfigureRouter2['default'])(api.paths);
+    router = (0, _ConfigureRouter2['default'])(api.paths, config.mock || {});
   }
 
   return function (req, res, next) {
