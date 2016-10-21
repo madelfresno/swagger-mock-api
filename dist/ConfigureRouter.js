@@ -27,6 +27,7 @@ function correctPath(path) {
     var segment = s;
     if (segment.charAt(0) === '{' && segment.charAt(segment.length - 1) === '}') {
       segment = segment.slice(1, -1);
+      segment = segment.replace(/(\-|\?|\*)/g, ''); //remove wildcards
       return ':' + segment;
     }
 
