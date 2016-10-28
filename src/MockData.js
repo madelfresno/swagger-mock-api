@@ -14,18 +14,8 @@ export default function MockData(definition, configMock) {
   let mock = null;
 
   if (configMock.useExamples) {
-    if (configMock.useExamples && definition.examples) {
-      let keys = Object.keys(definition.examples);
-      let key = keys.find(function(obj) {
-        return obj.includes('json');
-      });
-      if (key) {
-        mock = definition.examples[key];
-        if (typeof(mock) === 'string') {
-          mock = stripJsonComments(mock);
-          mock = JSON.parse(mock);
-        }
-      }
+    if (configMock.useExamples && typeof(definition.examples) === 'object') {
+      mock = definition.examples;
       if (configMock.extendExamples) {
         mock = Object.assign(parser.parse(schema), mock);
       }
