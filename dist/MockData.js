@@ -1,7 +1,5 @@
 'use strict';
 
-var _Object$keys = require('babel-runtime/core-js/object/keys')['default'];
-
 var _Object$assign = require('babel-runtime/core-js/object/assign')['default'];
 
 var _interopRequireDefault = require('babel-runtime/helpers/interop-require-default')['default'];
@@ -29,18 +27,8 @@ function MockData(definition, configMock) {
   var mock = null;
 
   if (configMock.useExamples) {
-    if (configMock.useExamples && definition.examples) {
-      var keys = _Object$keys(definition.examples);
-      var key = keys.find(function (obj) {
-        return obj.includes('json');
-      });
-      if (key) {
-        mock = definition.examples[key];
-        if (typeof mock === 'string') {
-          mock = (0, _stripJsonComments2['default'])(mock);
-          mock = JSON.parse(mock);
-        }
-      }
+    if (configMock.useExamples && typeof definition.examples === 'object') {
+      mock = definition.examples;
       if (configMock.extendExamples) {
         mock = _Object$assign(parser.parse(schema), mock);
       }
