@@ -74,6 +74,12 @@ exports['default'] = function (config) {
     parserPromise.then(function () {
       var method = req.method.toLowerCase();
 
+      if (method === 'options') {
+        res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, FETCH, OPTIONS');
+        res.end();
+        return;
+      }
+
       var path = _url2['default'].parse(req.url).pathname;
       path = path.replace(basePath + '/', '');
       if (path.charAt(0) !== '/') {
