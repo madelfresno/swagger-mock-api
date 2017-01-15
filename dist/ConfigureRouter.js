@@ -91,7 +91,7 @@ function ConfigureRouter(paths, configMock) {
     var route = correctPath(pk);
 
     for (var mk in path) {
-      if (!path.hasOwnProperty(mk)) continue;
+      if (!path.hasOwnProperty(mk) || mk == "parameters") continue;
 
       var method = path[mk];
 
