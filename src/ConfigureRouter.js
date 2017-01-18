@@ -55,7 +55,9 @@ export default function ConfigureRouter(paths, configMock) {
     let route = correctPath(pk);
 
     for (let mk in path) {
-      if (!path.hasOwnProperty(mk)) continue;
+      if (!path.hasOwnProperty(mk) || mk == "parameters") {
+        continue;
+      }
 
       let method = path[mk];
 
