@@ -53,7 +53,6 @@ export default function(config) {
       const method = req.method.toLowerCase();
 
       if (method === 'options') {
-        res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, FETCH, OPTIONS');
         res.end();
         return;
       }
